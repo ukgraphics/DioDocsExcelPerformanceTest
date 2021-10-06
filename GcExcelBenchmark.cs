@@ -10,10 +10,8 @@ namespace GcExcelPerformanceTest
         public static void TestSetRangeValues_Double(int rowCount, int columnCount, ref double setTime, ref double getTime, ref double saveTime, ref double usedMem)
         {
 
-            Console.WriteLine();
-            Console.WriteLine(string.Format("GcExcel benchmark for double values with {0} rows and {1} columns", rowCount, columnCount));
-
-            //	double startMem = GetMemory();
+            Console.WriteLine("DioDocs for Excel：");
+            Console.WriteLine(string.Format("{0} 行 {1} 列で数値（double）を使用する場合のベンチマーク", rowCount, columnCount));
 
             IWorkbook workbook = new Workbook();
             IWorksheet worksheet = workbook.Worksheets[0];
@@ -34,24 +32,21 @@ namespace GcExcelPerformanceTest
             DateTime end = DateTime.Now;
 
             setTime = (end - start).TotalSeconds;
-            Console.WriteLine(string.Format("GcExcel set double values: {0:N3} s", setTime));
+            Console.WriteLine(string.Format("数値（double）を設定する：{0:N3} 秒", setTime));
 
             start = DateTime.Now;
             object tmpValues = worksheet.Range[0, 0, rowCount, columnCount].Value;
             end = DateTime.Now;
 
             getTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel get double values: {0:N3} s", getTime));
+            Console.WriteLine(string.Format("数値（double）を取得する：{0:N3} 秒", getTime));
 
             start = DateTime.Now;
             workbook.Save("./files/gcexcel-saved-doubles.xlsx");
             end = DateTime.Now;
             saveTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel save doubles to Excel: {0:N3} s", saveTime));
+            Console.WriteLine(string.Format("数値（double）を保存する：{0:N3} 秒", saveTime));
 
-            //double endMem = GetMemory();
-            //usedMem = (endMem - startMem)/1024/1024 ;
-            //Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB ", usedMem));
         }
 
 
@@ -59,9 +54,7 @@ namespace GcExcelPerformanceTest
         {
 
             Console.WriteLine();
-            Console.WriteLine(string.Format("GcExcel benchmark for string values with {0} rows and {1} columns", rowCount, columnCount));
-
-            //	double startMem = GetMemory();
+            Console.WriteLine(string.Format("{0} 行 {1} 列で文字列値（string）を使用する場合のベンチマーク", rowCount, columnCount));
 
             IWorkbook workbook = new Workbook();
             IWorksheet worksheet = workbook.Worksheets[0];
@@ -85,33 +78,28 @@ namespace GcExcelPerformanceTest
             DateTime end = DateTime.Now;
 
             setTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel set string values: {0:N3} s", setTime));
+            Console.WriteLine(string.Format("文字列値（string）を設定する：{0:N3} 秒", setTime));
 
             start = DateTime.Now;
             object tmpValues = worksheet.Range[0, 0, rowCount, columnCount].Value;
             end = DateTime.Now;
 
             getTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel get string values: {0:N3} s", getTime));
+            Console.WriteLine(string.Format("文字列値（string）を取得する：{0:N3} 秒", getTime));
 
             start = DateTime.Now;
             workbook.Save("./files/gcexcel-saved-string.xlsx");
             end = DateTime.Now;
             saveTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel save string to Excel: {0:N3} s", saveTime));
+            Console.WriteLine(string.Format("文字列値（string）を保存する：{0:N3} 秒", saveTime));
 
-            //double endMem = GetMemory();
-            //usedMem = (endMem - startMem);
-            //Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB", usedMem));
         }
 
         public static void TestSetRangeValues_Date(int rowCount, int columnCount, ref double setTime, ref double getTime, ref double saveTime, ref double usedMem)
         {
 
             Console.WriteLine();
-            Console.WriteLine(string.Format("GcExcel benchmark for date values with {0} rows and {1} columns", rowCount, columnCount));
-
-            //double startMem = GetMemory();
+            Console.WriteLine(string.Format("{0} 行 {1} 列で日付値（date）を使用する場合のベンチマーク", rowCount, columnCount));
 
             IWorkbook workbook = new Workbook();
             IWorksheet worksheet = workbook.Worksheets[0];
@@ -131,33 +119,28 @@ namespace GcExcelPerformanceTest
             DateTime end = DateTime.Now;
 
             setTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel set date values: {0:N3} s", setTime));
+            Console.WriteLine(string.Format("日付値（date）を設定する：{0:N3} 秒", setTime));
 
             start = DateTime.Now;
             object tmpValues = worksheet.Range[0, 0, rowCount, columnCount].Value;
             end = DateTime.Now;
 
             getTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel get date values: {0:N3} s", getTime));
+            Console.WriteLine(string.Format("日付値（date）を取得する：{0:N3} 秒", getTime));
 
             start = DateTime.Now;
             workbook.Save("./files/gcexcel-saved-date.xlsx");
             end = DateTime.Now;
             saveTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel save date to Excel: {0:N3} s", saveTime));
+            Console.WriteLine(string.Format("日付値（date）を保存する：{0:N3} 秒", saveTime));
 
-            //double endMem = GetMemory();
-            //usedMem = (endMem - startMem);
-            //Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB", usedMem));
         }
 
         public static void TestSetRangeFormulas(int rowCount, int columnCount, ref double setTime, ref double calcTime, ref double saveTime, ref double usedMem)
         {
 
             Console.WriteLine();
-            Console.WriteLine(string.Format("GcExcel benchmark for formulas values with {0} rows and {1} columns", rowCount, columnCount));
-
-            //double startMem = GetMemory();
+            Console.WriteLine(string.Format("{0} 行 {1} 列で数式を使用する場合のベンチマーク", rowCount, columnCount));
 
             IWorkbook workbook = new Workbook();
             workbook.ReferenceStyle = ReferenceStyle.R1C1;
@@ -180,14 +163,14 @@ namespace GcExcelPerformanceTest
             DateTime end = DateTime.Now;
 
             setTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel set formulas: {0:N3} s", setTime));
+            Console.WriteLine(string.Format("数式を設定する：{0:N3} 秒", setTime));
 
             start = DateTime.Now;
             workbook.Calculate();
             end = DateTime.Now;
 
             calcTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel calculates formula: {0:N3} s", calcTime));
+            Console.WriteLine(string.Format("数式を計算する：{0:N3} 秒", calcTime));
 
             workbook.ReferenceStyle = ReferenceStyle.A1;
 
@@ -195,11 +178,8 @@ namespace GcExcelPerformanceTest
             workbook.Save("./files/gcexcel-saved-formulas.xlsx");
             end = DateTime.Now;
             saveTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel save formulas to Excel: {0:N3} s", saveTime));
+            Console.WriteLine(string.Format("数式を保存する：{0:N3} 秒", saveTime));
 
-            //double endMem = GetMemory();
-            //usedMem = (endMem - startMem);
-            //Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB", usedMem));
         }
 
 
@@ -207,9 +187,7 @@ namespace GcExcelPerformanceTest
         {
 
             Console.WriteLine();
-            Console.WriteLine(string.Format("GcExcel benchmark for test-performance.xlsx which is 20.5MB with a lot of values, formulas and styles"));
-
-            //double startMem = GetMemory();
+            Console.WriteLine(string.Format("多くの数値、数式、スタイルを含む大きなサイズのExcelファイルを使用する場合のベンチマーク"));
 
             IWorkbook workbook = new Workbook();
 
@@ -218,7 +196,7 @@ namespace GcExcelPerformanceTest
             DateTime end = DateTime.Now;
 
             openTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel open big Excel: {0:N3} s", openTime));
+            Console.WriteLine(string.Format("Excelファイルを開く：{0:N3} 秒", openTime));
 
             start = DateTime.Now;
             workbook.Dirty();
@@ -226,17 +204,14 @@ namespace GcExcelPerformanceTest
             end = DateTime.Now;
 
             calcTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel calculate formulas for big Excel: {0:N3} s", calcTime));
+            Console.WriteLine(string.Format("数式を計算する：{0:N3} 秒", calcTime));
 
             start = DateTime.Now;
             workbook.Save("./files/gcexcel-saved-test-performance.xlsx");
             end = DateTime.Now;
             saveTime = (end - start).TotalSeconds; ;
-            Console.WriteLine(string.Format("GcExcel save back to big Excel: {0:N3} s", saveTime));
+            Console.WriteLine(string.Format("Excelファイルに保存する：{0:N3} 秒", saveTime));
 
-            //double endMem = GetMemory();
-            //usedMem = (endMem - startMem);
-            //Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB", usedMem));
         }
 
         public static double GetMemory()

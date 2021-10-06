@@ -17,7 +17,7 @@ namespace GcExcelPerformanceTest
             {
                 GcExcelBenchmark.TestSetRangeValues_Double(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
             });
-            Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB ", memDiff / 1024 / 1024));
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
 
             GC.Collect();
 
@@ -25,7 +25,7 @@ namespace GcExcelPerformanceTest
             {
                 GcExcelBenchmark.TestSetRangeValues_String(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
             });
-            Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB ", memDiff / 1024 / 1024));
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
 
             GC.Collect();
 
@@ -33,15 +33,7 @@ namespace GcExcelPerformanceTest
             {
                 GcExcelBenchmark.TestSetRangeValues_Date(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
             });
-            Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB ", memDiff / 1024 / 1024));
-
-            GC.Collect();
-
-            memDiff = GetMaxTotalMemoryAllocation(() =>
-            {
-                GcExcelBenchmark.TestBigExcelFile(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
-            });
-            Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB ", memDiff / 1024 / 1024));
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
 
             GC.Collect();
 
@@ -49,7 +41,15 @@ namespace GcExcelPerformanceTest
             {
                 GcExcelBenchmark.TestSetRangeFormulas(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
             });
-            Console.WriteLine(string.Format("GcExcel used memory: {0:N3} MB ", memDiff / 1024 / 1024));
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
+
+            GC.Collect();
+
+            memDiff = GetMaxTotalMemoryAllocation(() =>
+            {
+                GcExcelBenchmark.TestBigExcelFile(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
+            });
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
 
             GC.Collect();
 
@@ -57,7 +57,7 @@ namespace GcExcelPerformanceTest
             {
                 NPOIBenchmark.TestSetRangeValues_Double(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
             });
-            Console.WriteLine(string.Format("NPOI used memory: {0:N3} MB ", memDiff / 1024 / 1024));
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
 
             GC.Collect();
 
@@ -65,7 +65,7 @@ namespace GcExcelPerformanceTest
             {
                 NPOIBenchmark.TestSetRangeValues_String(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
             });
-            Console.WriteLine(string.Format("NPOI used memory: {0:N3} MB ", memDiff / 1024 / 1024));
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
 
             GC.Collect();
 
@@ -74,7 +74,15 @@ namespace GcExcelPerformanceTest
                 NPOIBenchmark.TestSetRangeValues_Date(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
 
             });
-            Console.WriteLine(string.Format("NPOI used memory: {0:N3} MB ", memDiff / 1024 / 1024));
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
+
+            GC.Collect();
+
+            memDiff = GetMaxTotalMemoryAllocation(() =>
+            {
+                NPOIBenchmark.TestSetRangeFormulas(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
+            });
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
 
             GC.Collect();
 
@@ -82,14 +90,7 @@ namespace GcExcelPerformanceTest
             {
                 NPOIBenchmark.TestBigExcelFile(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
             });
-            Console.WriteLine(string.Format("NPOI used memory: {0:N3} MB ", memDiff / 1024 / 1024));
-
-            GC.Collect();
-            memDiff = GetMaxTotalMemoryAllocation(() =>
-            {
-                NPOIBenchmark.TestSetRangeFormulas(row, col, ref setTime, ref getTime, ref saveTime, ref usedMem);
-            });
-            Console.WriteLine(string.Format("NPOI used memory: {0:N3} MB ", memDiff / 1024 / 1024));
+            Console.WriteLine(string.Format("メモリ使用量：{0:N3} MB ", memDiff / 1024 / 1024));
 
             Console.ReadKey();
         }
